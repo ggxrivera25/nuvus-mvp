@@ -1,7 +1,6 @@
-# Nuvus — Revenue OS for Creators & Athletes
+# Nuvus 
 
-The revenue operating system that helps creators and athletes identify monetization opportunities, price deals correctly, manage brand relationships, and optimize earnings.
-
+Special project
 ## Local Development
 
 ```bash
