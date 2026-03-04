@@ -4,14 +4,14 @@ import { TrendingUp, DollarSign, Users, Target, ChevronRight, Star, ArrowUpRight
 
 // ==================== DESIGN TOKENS ====================
 const C = {
-  bg: "#0A0B0F", surface: "#12131A", surfaceHover: "#1A1B24",
-  border: "#1E2030", borderLight: "#2A2D42",
-  text: "#E8E9F0", textMuted: "#7A7F9A", textDim: "#4A4F6A",
-  accent: "#6C5CE7", accentLight: "#A29BFE", accentGlow: "rgba(108,92,231,0.15)",
-  green: "#00D68F", greenDim: "rgba(0,214,143,0.12)",
-  red: "#FF6B6B", redDim: "rgba(255,107,107,0.12)",
-  orange: "#FDCB6E", orangeDim: "rgba(253,203,110,0.12)",
-  blue: "#74B9FF", blueDim: "rgba(116,185,255,0.12)",
+  bg: "#0D0F0A", surface: "#151913", surfaceHover: "#1C211A",
+  border: "#242B20", borderLight: "#2F382A",
+  text: "#E8EDDF", textMuted: "#8A9178", textDim: "#5A6350",
+  accent: "#A8C686", accentLight: "#C4DBA0", accentGlow: "rgba(168,198,134,0.15)",
+  green: "#7EC87E", greenDim: "rgba(126,200,126,0.12)",
+  red: "#E87070", redDim: "rgba(232,112,112,0.12)",
+  orange: "#DEB866", orangeDim: "rgba(222,184,102,0.12)",
+  blue: "#7EB5D6", blueDim: "rgba(126,181,214,0.12)",
 };
 
 const stageColors = {
@@ -103,7 +103,7 @@ function StatCard({ icon: Icon, label, value, change, changeLabel, accent = fals
         </div>
         <span style={{ color: C.textMuted, fontSize: 13, fontWeight: 500, letterSpacing: 0.3 }}>{label}</span>
       </div>
-      <div style={{ fontSize: 28, fontWeight: 700, color: C.text, fontFamily: "'Outfit', sans-serif", letterSpacing: -0.5 }}>{value}</div>
+      <div style={{ fontSize: 28, fontWeight: 700, color: C.text, fontFamily: "'Cabinet Grotesk', 'Instrument Sans', sans-serif", letterSpacing: -0.5 }}>{value}</div>
       {change !== undefined && (
         <div style={{ display: "flex", alignItems: "center", gap: 5, marginTop: 8 }}>
           {isPositive ? <ArrowUpRight size={14} color={C.green} /> : <ArrowDownRight size={14} color={C.red} />}
@@ -121,7 +121,7 @@ function NavItem({ icon: Icon, label, active, onClick, badge }) {
       <Icon size={19} color={active ? C.accentLight : C.textMuted} />
       <span style={{ fontSize: 14, fontWeight: active ? 600 : 400, color: active ? C.text : C.textMuted }}>{label}</span>
       {active && <div style={{ position: "absolute", left: 0, top: "50%", transform: "translateY(-50%)", width: 3, height: 20, borderRadius: 4, background: C.accent }} />}
-      {badge && <span style={{ marginLeft: "auto", fontSize: 11, fontWeight: 700, color: C.bg, background: C.accent, borderRadius: 10, padding: "2px 8px" }}>{badge}</span>}
+      {badge && <span style={{ marginLeft: "auto", fontSize: 11, fontWeight: 700, color: "#0D0F0A", background: C.accent, borderRadius: 10, padding: "2px 8px" }}>{badge}</span>}
     </button>
   );
 }
@@ -132,7 +132,7 @@ function Modal({ title, onClose, children, width = 500 }) {
       <div onClick={e => e.stopPropagation()} style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 20, width: "100%", maxWidth: width, maxHeight: "85vh", overflowY: "auto", animation: "modalIn 0.2s ease" }}>
         <style>{`@keyframes modalIn { from { opacity:0; transform: scale(0.95) translateY(10px); } to { opacity:1; transform: scale(1) translateY(0); } }`}</style>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "20px 24px", borderBottom: `1px solid ${C.border}` }}>
-          <h3 style={{ fontSize: 17, fontWeight: 700, color: C.text, margin: 0, fontFamily: "'Outfit', sans-serif" }}>{title}</h3>
+          <h3 style={{ fontSize: 17, fontWeight: 700, color: C.text, margin: 0, fontFamily: "'Cabinet Grotesk', 'Instrument Sans', sans-serif" }}>{title}</h3>
           <button onClick={onClose} style={{ background: C.border, border: "none", borderRadius: 8, width: 32, height: 32, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}><X size={16} color={C.textMuted} /></button>
         </div>
         <div style={{ padding: 24 }}>{children}</div>
@@ -168,7 +168,7 @@ function SelectField({ label, value, onChange, options, placeholder }) {
 
 function Btn({ children, onClick, variant = "primary", full = false, small = false, disabled = false, icon: Icon }) {
   const styles = {
-    primary: { background: C.accent, color: "#fff" },
+    primary: { background: C.accent, color: "#0D0F0A" },
     secondary: { background: C.border, color: C.text },
     danger: { background: C.redDim, color: C.red },
     success: { background: C.greenDim, color: C.green },
@@ -233,17 +233,18 @@ function OnboardingFlow({ onComplete }) {
   if (analyzing) {
     const labelIndex = Math.min(Math.floor(analyzeProgress / 18), analyzeLabels.length - 1);
     return (
-      <div style={{ height: "100vh", background: C.bg, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'DM Sans', sans-serif" }}>
-        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+      <div style={{ height: "100vh", background: C.bg, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'Instrument Sans', sans-serif" }}>
+        <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.cdnfonts.com/css/cabinet-grotesk" rel="stylesheet" />
         <div style={{ textAlign: "center", maxWidth: 400 }}>
           <div style={{ width: 64, height: 64, borderRadius: 18, background: `linear-gradient(135deg, ${C.accent}30, ${C.green}30)`, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 28px", animation: "pulse 1.5s ease infinite" }}>
             <Sparkles size={28} color={C.accentLight} />
           </div>
           <style>{`@keyframes pulse { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.08); opacity: 0.8; } }`}</style>
-          <h2 style={{ fontSize: 22, fontWeight: 700, fontFamily: "'Outfit', sans-serif", color: C.text, marginBottom: 8 }}>Analyzing your profile</h2>
+          <h2 style={{ fontSize: 22, fontWeight: 700, fontFamily: "'Cabinet Grotesk', 'Instrument Sans', sans-serif", color: C.text, marginBottom: 8 }}>Analyzing your profile</h2>
           <p style={{ fontSize: 14, color: C.textMuted, marginBottom: 32 }}>{analyzeLabels[labelIndex]}</p>
           <div style={{ height: 6, background: C.border, borderRadius: 3, overflow: "hidden", marginBottom: 12 }}>
-            <div style={{ height: "100%", background: `linear-gradient(90deg, ${C.accent}, ${C.green})`, borderRadius: 3, width: `${analyzeProgress}%`, transition: "width 0.4s ease" }} />
+            <div style={{ height: "100%", background: `linear-gradient(90deg, #6B8F4E, ${C.accentLight})`, borderRadius: 3, width: `${analyzeProgress}%`, transition: "width 0.4s ease" }} />
           </div>
           <div style={{ fontSize: 12, color: C.textDim }}>{analyzeProgress}%</div>
         </div>
@@ -258,8 +259,8 @@ function OnboardingFlow({ onComplete }) {
       case 0:
         return (
           <div style={{ textAlign: "center", maxWidth: 520, margin: "0 auto" }}>
-            <div style={{ width: 72, height: 72, borderRadius: 20, background: `linear-gradient(135deg, ${C.accent}, ${C.green})`, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 28px" }}><Zap size={32} color="#fff" /></div>
-            <h1 style={{ fontSize: 32, fontWeight: 800, fontFamily: "'Outfit', sans-serif", marginBottom: 12, background: `linear-gradient(135deg, ${C.text}, ${C.accentLight})`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Welcome to Nuvus</h1>
+            <img src="./Nuvus.png" alt="Nuvus" style={{ width: 72, height: 72, borderRadius: 20, objectFit: "cover", margin: "0 auto 28px" }} />
+            <h1 style={{ fontSize: 32, fontWeight: 800, fontFamily: "'Cabinet Grotesk', 'Instrument Sans', sans-serif", marginBottom: 12, background: `linear-gradient(135deg, ${C.text}, ${C.accentLight})`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Welcome to Nuvus</h1>
             <p style={{ fontSize: 16, color: C.textMuted, marginBottom: 40, lineHeight: 1.6 }}>Let's build your revenue profile. This takes about 2 minutes and unlocks personalized pricing, brand matches, and revenue insights.</p>
             <div style={{ display: "flex", flexDirection: "column", gap: 14, marginBottom: 36 }}>
               <input placeholder="Your name" value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 12, padding: "14px 18px", fontSize: 15, color: C.text, outline: "none", width: "100%", fontFamily: "inherit" }} />
@@ -270,14 +271,14 @@ function OnboardingFlow({ onComplete }) {
                 ))}
               </div>
             </div>
-            <button onClick={() => setStep(1)} disabled={!formData.name || !formData.type} style={{ background: formData.name && formData.type ? C.accent : C.border, color: formData.name && formData.type ? "#fff" : C.textDim, border: "none", borderRadius: 12, padding: "14px 40px", fontSize: 15, fontWeight: 600, cursor: formData.name && formData.type ? "pointer" : "default" }}>Continue <ArrowRight size={16} style={{ verticalAlign: "middle", marginLeft: 6 }} /></button>
+            <button onClick={() => setStep(1)} disabled={!formData.name || !formData.type} style={{ background: formData.name && formData.type ? C.accent : C.border, color: formData.name && formData.type ? "#0D0F0A" : C.textDim, border: "none", borderRadius: 12, padding: "14px 40px", fontSize: 15, fontWeight: 600, cursor: formData.name && formData.type ? "pointer" : "default" }}>Continue <ArrowRight size={16} style={{ verticalAlign: "middle", marginLeft: 6 }} /></button>
           </div>
         );
 
       case 1:
         return (
           <div style={{ maxWidth: 560, margin: "0 auto" }}>
-            <h2 style={{ fontSize: 24, fontWeight: 700, fontFamily: "'Outfit', sans-serif", marginBottom: 8 }}>Connect your platforms</h2>
+            <h2 style={{ fontSize: 24, fontWeight: 700, fontFamily: "'Cabinet Grotesk', 'Instrument Sans', sans-serif", marginBottom: 8 }}>Connect your platforms</h2>
             <p style={{ fontSize: 14, color: C.textMuted, marginBottom: 28 }}>Select platforms, then enter your metrics. This powers your pricing engine.</p>
             <div style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 32 }}>
               {platformOptions.map(p => {
@@ -320,7 +321,7 @@ function OnboardingFlow({ onComplete }) {
             </div>
             <div style={{ display: "flex", gap: 10 }}>
               <button onClick={() => setStep(0)} style={{ background: C.border, color: C.textMuted, border: "none", borderRadius: 12, padding: "14px 24px", fontSize: 14, fontWeight: 500, cursor: "pointer" }}><ChevronLeft size={16} style={{ verticalAlign: "middle" }} /> Back</button>
-              <button onClick={() => setStep(2)} disabled={formData.platforms.length === 0} style={{ flex: 1, background: formData.platforms.length > 0 ? C.accent : C.border, color: formData.platforms.length > 0 ? "#fff" : C.textDim, border: "none", borderRadius: 12, padding: "14px 0", fontSize: 15, fontWeight: 600, cursor: formData.platforms.length > 0 ? "pointer" : "default" }}>Continue</button>
+              <button onClick={() => setStep(2)} disabled={formData.platforms.length === 0} style={{ flex: 1, background: formData.platforms.length > 0 ? C.accent : C.border, color: formData.platforms.length > 0 ? "#0D0F0A" : C.textDim, border: "none", borderRadius: 12, padding: "14px 0", fontSize: 15, fontWeight: 600, cursor: formData.platforms.length > 0 ? "pointer" : "default" }}>Continue</button>
             </div>
           </div>
         );
@@ -328,7 +329,7 @@ function OnboardingFlow({ onComplete }) {
       case 2:
         return (
           <div style={{ maxWidth: 560, margin: "0 auto" }}>
-            <h2 style={{ fontSize: 24, fontWeight: 700, fontFamily: "'Outfit', sans-serif", marginBottom: 8 }}>What categories do you work in?</h2>
+            <h2 style={{ fontSize: 24, fontWeight: 700, fontFamily: "'Cabinet Grotesk', 'Instrument Sans', sans-serif", marginBottom: 8 }}>What categories do you work in?</h2>
             <p style={{ fontSize: 14, color: C.textMuted, marginBottom: 28 }}>Pick the verticals that match your content. This powers brand matching.</p>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8, marginBottom: 28 }}>
               {categoryOptions.map(cat => {
@@ -353,7 +354,7 @@ function OnboardingFlow({ onComplete }) {
             </div>
             <div style={{ display: "flex", gap: 10 }}>
               <button onClick={() => setStep(1)} style={{ background: C.border, color: C.textMuted, border: "none", borderRadius: 12, padding: "14px 24px", fontSize: 14, fontWeight: 500, cursor: "pointer" }}><ChevronLeft size={16} style={{ verticalAlign: "middle" }} /> Back</button>
-              <button onClick={handleAnalyze} disabled={formData.categories.length === 0} style={{ flex: 1, background: formData.categories.length > 0 ? `linear-gradient(135deg, ${C.accent}, ${C.green})` : C.border, color: formData.categories.length > 0 ? "#fff" : C.textDim, border: "none", borderRadius: 12, padding: "14px 0", fontSize: 15, fontWeight: 600, cursor: formData.categories.length > 0 ? "pointer" : "default", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
+              <button onClick={handleAnalyze} disabled={formData.categories.length === 0} style={{ flex: 1, background: formData.categories.length > 0 ? `linear-gradient(135deg, #6B8F4E, ${C.accentLight})` : C.border, color: formData.categories.length > 0 ? "#0D0F0A" : C.textDim, border: "none", borderRadius: 12, padding: "14px 0", fontSize: 15, fontWeight: 600, cursor: formData.categories.length > 0 ? "pointer" : "default", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
                 <Sparkles size={18} /> Build My Revenue Profile
               </button>
             </div>
@@ -365,8 +366,9 @@ function OnboardingFlow({ onComplete }) {
   };
 
   return (
-    <div style={{ height: "100vh", background: C.bg, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", fontFamily: "'DM Sans', sans-serif", padding: 40, color: C.text }}>
-      <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+    <div style={{ height: "100vh", background: C.bg, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", fontFamily: "'Instrument Sans', sans-serif", padding: 40, color: C.text }}>
+      <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.cdnfonts.com/css/cabinet-grotesk" rel="stylesheet" />
       <div style={{ display: "flex", gap: 8, marginBottom: 40 }}>
         {progressDots.map(i => (
           <div key={i} style={{ width: i === step ? 32 : 10, height: 6, borderRadius: 3, background: i <= step ? C.accent : C.border, transition: "all 0.3s" }} />
@@ -393,9 +395,10 @@ function BeforeAfterView({ onContinue }) {
   ];
 
   return (
-    <div style={{ height: "100vh", background: C.bg, fontFamily: "'DM Sans', sans-serif", color: C.text, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: 40 }}>
-      <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-      <h1 style={{ fontSize: 28, fontWeight: 800, fontFamily: "'Outfit', sans-serif", marginBottom: 8 }}>{showAfter ? "After Nuvus" : "Before Nuvus"}</h1>
+    <div style={{ height: "100vh", background: C.bg, fontFamily: "'Instrument Sans', sans-serif", color: C.text, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: 40 }}>
+      <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.cdnfonts.com/css/cabinet-grotesk" rel="stylesheet" />
+      <h1 style={{ fontSize: 28, fontWeight: 800, fontFamily: "'Cabinet Grotesk', 'Instrument Sans', sans-serif", marginBottom: 8 }}>{showAfter ? "After Nuvus" : "Before Nuvus"}</h1>
       <p style={{ fontSize: 14, color: C.textMuted, marginBottom: 36 }}>{showAfter ? "Everything in one place. Priced right. Deals tracked. Revenue clear." : "This is how most creators manage their brand deals today."}</p>
 
       {!showAfter ? (
@@ -425,7 +428,7 @@ function BeforeAfterView({ onContinue }) {
             ))}
           </div>
           <div style={{ textAlign: "center", marginTop: 20 }}>
-            <button onClick={onContinue} style={{ background: `linear-gradient(135deg, ${C.accent}, ${C.green})`, color: "#fff", border: "none", borderRadius: 12, padding: "14px 40px", fontSize: 15, fontWeight: 600, cursor: "pointer", display: "inline-flex", alignItems: "center", gap: 8 }}>Enter your dashboard <ArrowRight size={16} /></button>
+            <button onClick={onContinue} style={{ background: `linear-gradient(135deg, #6B8F4E, ${C.accentLight})`, color: "#0D0F0A", border: "none", borderRadius: 12, padding: "14px 40px", fontSize: 15, fontWeight: 600, cursor: "pointer", display: "inline-flex", alignItems: "center", gap: 8 }}>Enter your dashboard <ArrowRight size={16} /></button>
           </div>
         </div>
       )}
@@ -491,7 +494,7 @@ function PricingEngine({ profile, userPrices, setUserPrices }) {
                 </div>
                 <div style={{ textAlign: "right" }}>
                   <div style={{ fontSize: 11, color: C.textDim, marginBottom: 2 }}>Recommended</div>
-                  <div style={{ fontSize: 20, fontWeight: 700, color: C.green, fontFamily: "'Outfit', sans-serif" }}>${item.recommended.toLocaleString()}</div>
+                  <div style={{ fontSize: 20, fontWeight: 700, color: C.green, fontFamily: "'Cabinet Grotesk', 'Instrument Sans', sans-serif" }}>${item.recommended.toLocaleString()}</div>
                 </div>
               </div>
               <div style={{ display: "flex", gap: 12, alignItems: "center", fontSize: 12 }}>
@@ -599,7 +602,7 @@ function DealWorkspace({ deals, setDeals }) {
                   <div key={deal.id} style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 12, padding: 14, cursor: "pointer", transition: "all 0.15s" }}>
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "start", marginBottom: 6 }}>
                       <span style={{ fontSize: 14, fontWeight: 600, color: C.text }}>{deal.brand}</span>
-                      <span style={{ fontSize: 14, fontWeight: 700, color: C.green, fontFamily: "'Outfit', sans-serif" }}>${(parseInt(deal.value) / 1000).toFixed(0)}K</span>
+                      <span style={{ fontSize: 14, fontWeight: 700, color: C.green, fontFamily: "'Cabinet Grotesk', 'Instrument Sans', sans-serif" }}>${(parseInt(deal.value) / 1000).toFixed(0)}K</span>
                     </div>
                     {deal.type && <div style={{ fontSize: 12, color: C.textMuted, marginBottom: 8 }}>{deal.type}</div>}
                     {deal.notes && <div style={{ fontSize: 11, color: C.textDim, marginBottom: 8, fontStyle: "italic" }}>{deal.notes}</div>}
@@ -686,7 +689,7 @@ function BrandMatching({ profile, deals, setDeals, brandStatuses, setBrandStatus
           return (
             <div key={brand.id} style={{ background: C.surface, border: `1px solid ${expandedId === brand.id ? C.accent + "40" : C.border}`, borderRadius: 14, overflow: "hidden", transition: "all 0.2s" }}>
               <button onClick={() => setExpandedId(expandedId === brand.id ? null : brand.id)} style={{ display: "flex", alignItems: "center", gap: 16, padding: "18px 22px", width: "100%", background: "none", border: "none", cursor: "pointer", textAlign: "left" }}>
-                <div style={{ width: 44, height: 44, borderRadius: 12, background: brand.color + "20", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, fontWeight: 700, color: brand.color, fontFamily: "'Outfit', sans-serif", flexShrink: 0 }}>{brand.logo}</div>
+                <div style={{ width: 44, height: 44, borderRadius: 12, background: brand.color + "20", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, fontWeight: 700, color: brand.color, fontFamily: "'Cabinet Grotesk', 'Instrument Sans', sans-serif", flexShrink: 0 }}>{brand.logo}</div>
                 <div style={{ flex: 1 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                     <span style={{ fontSize: 15, fontWeight: 600, color: C.text }}>{brand.name}</span>
@@ -695,7 +698,7 @@ function BrandMatching({ profile, deals, setDeals, brandStatuses, setBrandStatus
                   <div style={{ fontSize: 12, color: C.textMuted }}>{brand.categories.join(" • ")} • ${(brand.minBudget / 1000).toFixed(0)}K–${(brand.maxBudget / 1000).toFixed(0)}K</div>
                 </div>
                 <div style={{ textAlign: "right" }}>
-                  <div style={{ fontSize: 22, fontWeight: 700, color: brand.fit >= 80 ? C.green : brand.fit >= 60 ? C.accentLight : C.orange, fontFamily: "'Outfit', sans-serif" }}>{brand.fit}%</div>
+                  <div style={{ fontSize: 22, fontWeight: 700, color: brand.fit >= 80 ? C.green : brand.fit >= 60 ? C.accentLight : C.orange, fontFamily: "'Cabinet Grotesk', 'Instrument Sans', sans-serif" }}>{brand.fit}%</div>
                   <div style={{ fontSize: 11, color: C.textDim }}>Fit Score</div>
                 </div>
                 <ChevronDown size={16} color={C.textDim} style={{ transform: expandedId === brand.id ? "rotate(180deg)" : "rotate(0)", transition: "transform 0.2s", flexShrink: 0 }} />
@@ -870,11 +873,11 @@ function CreatorProfile({ profile, setProfile }) {
   return (
     <div>
       <div style={{ display: "flex", gap: 20, alignItems: "center", marginBottom: 28, background: C.surface, border: `1px solid ${C.border}`, borderRadius: 16, padding: 24 }}>
-        <div style={{ width: 72, height: 72, borderRadius: 20, background: `linear-gradient(135deg, ${C.accent}, ${C.green})`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 28, fontWeight: 700, color: "#fff", fontFamily: "'Outfit', sans-serif", flexShrink: 0 }}>
+        <div style={{ width: 72, height: 72, borderRadius: 20, background: `linear-gradient(135deg, #6B8F4E, ${C.accentLight})`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 28, fontWeight: 700, color: "#0D0F0A", fontFamily: "'Cabinet Grotesk', 'Instrument Sans', sans-serif", flexShrink: 0 }}>
           {(profile.name || "?").split(" ").map(w => w[0]).join("").toUpperCase().slice(0, 2)}
         </div>
         <div style={{ flex: 1 }}>
-          <div style={{ fontSize: 22, fontWeight: 700, color: C.text, fontFamily: "'Outfit', sans-serif" }}>{profile.name}</div>
+          <div style={{ fontSize: 22, fontWeight: 700, color: C.text, fontFamily: "'Cabinet Grotesk', 'Instrument Sans', sans-serif" }}>{profile.name}</div>
           <div style={{ fontSize: 13, color: C.textMuted, marginBottom: 8 }}>{profile.type}</div>
           <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
             {(profile.categories || []).map(c => (
@@ -884,7 +887,7 @@ function CreatorProfile({ profile, setProfile }) {
         </div>
         <div style={{ textAlign: "right" }}>
           <div style={{ fontSize: 11, color: C.textDim, marginBottom: 4 }}>Monetization Score</div>
-          <div style={{ fontSize: 36, fontWeight: 700, color: C.green, fontFamily: "'Outfit', sans-serif" }}>{monetizationScore}</div>
+          <div style={{ fontSize: 36, fontWeight: 700, color: C.green, fontFamily: "'Cabinet Grotesk', 'Instrument Sans', sans-serif" }}>{monetizationScore}</div>
         </div>
         <Btn variant="secondary" onClick={() => { setEditData({ ...profile }); setEditing(true); }} icon={Edit3} small>Edit</Btn>
       </div>
@@ -902,11 +905,11 @@ function CreatorProfile({ profile, setProfile }) {
               </div>
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <div>
-                  <div style={{ fontSize: 18, fontWeight: 700, color: C.text, fontFamily: "'Outfit', sans-serif" }}>{formatFollowers(p.followers)}</div>
+                  <div style={{ fontSize: 18, fontWeight: 700, color: C.text, fontFamily: "'Cabinet Grotesk', 'Instrument Sans', sans-serif" }}>{formatFollowers(p.followers)}</div>
                   <div style={{ fontSize: 11, color: C.textDim }}>Followers</div>
                 </div>
                 <div style={{ textAlign: "right" }}>
-                  <div style={{ fontSize: 18, fontWeight: 700, color: C.green, fontFamily: "'Outfit', sans-serif" }}>{p.engagement}%</div>
+                  <div style={{ fontSize: 18, fontWeight: 700, color: C.green, fontFamily: "'Cabinet Grotesk', 'Instrument Sans', sans-serif" }}>{p.engagement}%</div>
                   <div style={{ fontSize: 11, color: C.textDim }}>Engagement</div>
                 </div>
               </div>
@@ -997,13 +1000,14 @@ export default function NuvusMVP() {
   const pageTitle = tabs.find(t => t.id === activeTab)?.label || "Dashboard";
 
   return (
-    <div style={{ display: "flex", height: "100vh", background: C.bg, fontFamily: "'DM Sans', -apple-system, sans-serif", color: C.text, overflow: "hidden" }}>
-      <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+    <div style={{ display: "flex", height: "100vh", background: C.bg, fontFamily: "'Instrument Sans', -apple-system, sans-serif", color: C.text, overflow: "hidden" }}>
+      <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.cdnfonts.com/css/cabinet-grotesk" rel="stylesheet" />
 
       <div style={{ width: 240, background: C.surface, borderRight: `1px solid ${C.border}`, display: "flex", flexDirection: "column", padding: "24px 14px", flexShrink: 0 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "0 8px", marginBottom: 36 }}>
-          <div style={{ width: 34, height: 34, borderRadius: 10, background: `linear-gradient(135deg, ${C.accent}, ${C.green})`, display: "flex", alignItems: "center", justifyContent: "center" }}><Zap size={18} color="#fff" /></div>
-          <span style={{ fontSize: 20, fontWeight: 800, fontFamily: "'Outfit', sans-serif", letterSpacing: -0.5, background: `linear-gradient(135deg, ${C.text}, ${C.accentLight})`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Nuvus</span>
+          <img src="./Nuvus.png" alt="Nuvus" style={{ height: 32, borderRadius: 8 }} />
+          <span style={{ fontSize: 20, fontWeight: 800, fontFamily: "'Cabinet Grotesk', 'Instrument Sans', sans-serif", letterSpacing: -0.5, color: C.text }}>Nuvus</span>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 4, flex: 1 }}>
           {tabs.map(tab => <NavItem key={tab.id} icon={tab.icon} label={tab.label} active={activeTab === tab.id} onClick={() => setActiveTab(tab.id)} badge={tab.badge} />)}
@@ -1016,7 +1020,7 @@ export default function NuvusMVP() {
 
       <div style={{ flex: 1, display: "flex", flexDirection: "column", overflow: "hidden" }}>
         <div style={{ height: 64, borderBottom: `1px solid ${C.border}`, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 28px", flexShrink: 0 }}>
-          <h1 style={{ fontSize: 18, fontWeight: 700, margin: 0, fontFamily: "'Outfit', sans-serif" }}>{pageTitle}</h1>
+          <h1 style={{ fontSize: 18, fontWeight: 700, margin: 0, fontFamily: "'Cabinet Grotesk', 'Instrument Sans', sans-serif" }}>{pageTitle}</h1>
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
             <div style={{ position: "relative" }}>
               <button onClick={() => setShowNotifs(!showNotifs)} style={{ width: 38, height: 38, borderRadius: 10, background: C.surface, border: `1px solid ${C.border}`, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", position: "relative" }}>
@@ -1034,7 +1038,7 @@ export default function NuvusMVP() {
                 </div>
               )}
             </div>
-            <div style={{ width: 38, height: 38, borderRadius: 10, background: `linear-gradient(135deg, ${C.accent}, ${C.green})`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, fontWeight: 700, color: "#fff", cursor: "pointer" }}>
+            <div style={{ width: 38, height: 38, borderRadius: 10, background: `linear-gradient(135deg, #6B8F4E, ${C.accentLight})`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, fontWeight: 700, color: "#0D0F0A", cursor: "pointer" }}>
               {(profile.name || "?").split(" ").map(w => w[0]).join("").toUpperCase().slice(0, 2)}
             </div>
           </div>
